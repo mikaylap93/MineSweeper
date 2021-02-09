@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MapPattern {
     HashMap<Integer,Integer> bombMap = new HashMap<>();
     HashMap<Integer,Integer> bombMapCopy = new HashMap<>();
-    CoverButton[][] gameGrid = new CoverButton[10][10];
+    MineBoxButton[][] gameGrid = new MineBoxButton[10][10];
     static int boxCounter = 0;
 
     MapPattern(){
@@ -19,7 +19,7 @@ public class MapPattern {
 
         for(int i =0; i<10; i++){
             for(int j = 0; j<10; j++){
-                gameGrid[i][j] = new CoverButton("-");
+                gameGrid[i][j] = new MineBoxButton("-");
             }
         }
 
