@@ -1,12 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame implements Murdered{
+public class MainFrame extends JFrame{
     static MapPattern mapPattern = new MapPattern();
 
     MainFrame(){
 
-        CoverButton.murdereds.add(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         int height =  Toolkit.getDefaultToolkit().getScreenSize().height;
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -26,8 +25,4 @@ public class MainFrame extends JFrame implements Murdered{
 
     }
 
-    @Override
-    public void die() {
-        dispose();
-    }
 }

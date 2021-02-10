@@ -1,11 +1,17 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MineBoxButton extends JToggleButton {
+    boolean isBomb;
+    boolean hasNoBombs;
+    int surroundingBombsTotal;
 
-    MineBoxButton(String name){
-        setName(name);
+    MineBoxButton(MineBox mineBox){
+        this.isBomb = mineBox.isBomb;
+        this.hasNoBombs = mineBox.hasNoBombs;
+        this.surroundingBombsTotal = mineBox.bombTotal;
         addMouseListener(mouseListener);
     }
 
@@ -13,44 +19,33 @@ public class MineBoxButton extends JToggleButton {
         @Override
         public void mouseClicked(MouseEvent e) {
             if(SwingUtilities.isLeftMouseButton(e)){
-                if(getName().equals("B")){
+                if(isBomb){
                     setText("☹");
                     JOptionPane.showMessageDialog(null,"You Loose ☹");
                 }
-                else if(getName().equals("")){
+                else if(hasNoBombs){
                     setVisible(false);
 
-                }else if(MapPattern.boxCounter == 90){
+                }else if(MapPattern.boxesClickedCounter == 90){
                     JOptionPane.showMessageDialog(null," ֍ You Win! ֍");
                 }
                 else {
-                    setText(getName());
+                    setText(String.valueOf(surroundingBombsTotal));
                 }
 
             }else if(SwingUtilities.isRightMouseButton(e)){
-                setText("⚐");
+                setForeground(Color.RED);
+                setText("⚑");
             }
-
         }
 
         @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
+        public void mousePressed(MouseEvent e) {}
         @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
+        public void mouseReleased(MouseEvent e) {}
         @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
+        public void mouseEntered(MouseEvent e) {}
         @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
+        public void mouseExited(MouseEvent e) {}
     };
 }
