@@ -83,7 +83,6 @@ public class MineBox {
         if (southWestLocation!=-1.0&& MapPattern.boxIsBomb(southWestLocation)) {total++;}
         if (westLocation!=-1.0&& MapPattern.boxIsBomb(westLocation)) {total++;}
         if (northWestLocation!=-1.0&& MapPattern.boxIsBomb(northWestLocation)) {total++;}
-        if (northLocation!=-1.0&& MapPattern.boxIsBomb(northLocation)) {total++;}
 
         //System.out.println(total);
 
