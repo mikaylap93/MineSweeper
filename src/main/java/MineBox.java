@@ -20,14 +20,22 @@ public class MineBox {
     int bombTotal;
 
     int row;
-    double columnLocation;
+    double columnAsDouble;
     int column;
+
 
     MineBox(double mineBoxLocation, boolean isBomb) {
         this.mineBoxLocation = mineBoxLocation;
         row = (int)mineBoxLocation;
-        columnLocation = (mineBoxLocation-row)*10;
-        column = (int) columnLocation;
+
+        String locationAsString = String.valueOf(this.mineBoxLocation);
+        int indexOfDecimal = locationAsString.indexOf(".");
+
+        row = Integer.parseInt(locationAsString.substring(0, indexOfDecimal));
+        columnAsDouble = Double.parseDouble(locationAsString.substring(indexOfDecimal))*10;
+        column = (int)columnAsDouble;
+        //System.out.println(row+"-"+column);
+
 
         identifySurroundingMineBlockLocations();
 
