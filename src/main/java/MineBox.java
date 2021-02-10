@@ -57,9 +57,9 @@ public class MineBox {
 
 
         if (row > 1) rowAboveExists = true;
-        if (row < 10) rowBelowExists = true;
+        if (row < 9) rowBelowExists = true;
         if (column > 1) columnToLeftExists = true;
-        if (column < 10) columnToRightExists = true;
+        if (column < 9) columnToRightExists = true;
 
         if (rowAboveExists) northLocation = ((row - 1) + (column/10.0));
         if (rowAboveExists && columnToRightExists) northEastLocation = ((row - 1) + ((column+1)/10.0));
@@ -68,7 +68,7 @@ public class MineBox {
         if (rowBelowExists) southLocation = ((row + 1) + (column/10.0));
         if (rowBelowExists && columnToLeftExists) southWestLocation = ((row + 1) + ((column - 1)/10.0));
         if (columnToLeftExists) westLocation = ((row) + (column - 1)/10.0);
-        if (columnToLeftExists && rowAboveExists) northWestLocation = ((row + 1) + (column)/10.0);
+        if (columnToLeftExists && rowAboveExists) northWestLocation = ((row -1) + (column-1)/10.0);
 
     }
 

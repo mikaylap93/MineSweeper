@@ -34,8 +34,8 @@ public class MapPattern {
     }
 
     double createRandomGridDouble(){
-        int randomX = ThreadLocalRandom.current().nextInt(1,11);
-        int randomY = ThreadLocalRandom.current().nextInt(1,11);
+        int randomX = ThreadLocalRandom.current().nextInt(1,10);
+        int randomY = ThreadLocalRandom.current().nextInt(1,10);
         return randomX+(randomY/10.0);
     }
 
