@@ -18,31 +18,34 @@ public class MineBoxButton extends JToggleButton {
     MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if(SwingUtilities.isLeftMouseButton(e)){
-                if(isBomb){
-                    setText("☹");
-                    JOptionPane.showMessageDialog(null,"You Loose ☹");
-                }
-                else if(hasNoBombs){
-                    setVisible(false);
+        }
 
-                }else if(MapPattern.boxesClickedCounter == 90){
-                    JOptionPane.showMessageDialog(null," ֍ You Win! ֍");
-                }
-                else {
+        @Override
+        public void mousePressed(MouseEvent e) {
+            if (SwingUtilities.isLeftMouseButton(e)) {
+                if (isBomb) {
+                    setText("☹");
+                    JOptionPane.showMessageDialog(null, "You Loose ☹");
+                } else if (!hasNoBombs) {
                     setText(String.valueOf(surroundingBombsTotal));
                 }
-
-            }else if(SwingUtilities.isRightMouseButton(e)){
+            }
+            if (SwingUtilities.isRightMouseButton(e)) {
                 setForeground(Color.RED);
                 setText("⚑");
             }
         }
-
         @Override
-        public void mousePressed(MouseEvent e) {}
-        @Override
-        public void mouseReleased(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {
+            if (SwingUtilities.isLeftMouseButton(e)) {
+                if (hasNoBombs) {
+                    setVisible(false);
+                }
+                if (MapPattern.boxesClickedCounter == 90) {
+                    JOptionPane.showMessageDialog(null, " ֍ You Win! ֍");
+                }
+            }
+        }
         @Override
         public void mouseEntered(MouseEvent e) {}
         @Override

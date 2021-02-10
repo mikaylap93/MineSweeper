@@ -18,7 +18,8 @@ public class MapPattern {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
 
-                gameGrid[i][j] = new MineBox((i+(j/10.0)),boxIsBomb(i+(j/10.0)));
+                double location = i+(j/10.0);
+                gameGrid[i][j] = new MineBox(location,boxIsBomb(location));
             }
         }
     }
