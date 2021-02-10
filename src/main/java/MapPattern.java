@@ -15,11 +15,13 @@ public class MapPattern {
 
         bombList.forEach(System.out::println);
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
 
                 double location = i+(j/10.0);
-                gameGrid[i][j] = new MineBox(location,boxIsBomb(location));
+                MineBox mineBox = new MineBox(location,boxIsBomb(location));
+                System.out.println(mineBox.toString());
+                gameGrid[i][j] = mineBox;
             }
         }
     }
