@@ -7,6 +7,7 @@ public class MapPattern {
     MineBox[][] gameGrid = new MineBox[10][10];
     static int boxesClickedCounter = 0;
 
+
     MapPattern() {
 
         for (int i = 0; i <= 10; i++) {
@@ -42,4 +43,5 @@ public class MapPattern {
     static boolean boxIsBomb(double blockLocation){
         return bombList.contains(blockLocation);
     }
+    //static boolean boxHasNoSurroundingBombs(double blockLocation){return }
 }

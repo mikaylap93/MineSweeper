@@ -40,8 +40,8 @@ public class MineBox {
         identifySurroundingMineBlockLocations();
 
         this.isBomb  = isBomb;
-        bombTotal = calculateSurroundingBombs();
-        if(calculateSurroundingBombs() == 0){
+        bombTotal = calculateSurroundingBombs(this);
+        if(calculateSurroundingBombs(this) == 0){
             hasNoBombs = true;
         }
 
@@ -52,9 +52,6 @@ public class MineBox {
     }
 
     private void identifySurroundingMineBlockLocations() {
-
-
-
 
         if (row > 1) rowAboveExists = true;
         if (row < 9) rowBelowExists = true;
@@ -72,17 +69,17 @@ public class MineBox {
 
     }
 
-    int calculateSurroundingBombs() {
+    static int calculateSurroundingBombs(MineBox mineBox) {
         int total = 0;
 
-        if (northLocation!=-1.0&& MapPattern.boxIsBomb(northLocation)) {total++;}
-        if (northEastLocation !=-1.0&& MapPattern.boxIsBomb(northEastLocation)) {total++;}
-        if (eastLocation!=-1.0&& MapPattern.boxIsBomb(eastLocation)) {total++;}
-        if (southEastLocation!=-1.0&& MapPattern.boxIsBomb(southEastLocation)) {total++;}
-        if (southLocation!=-1.0&& MapPattern.boxIsBomb(southLocation)) {total++;}
-        if (southWestLocation!=-1.0&& MapPattern.boxIsBomb(southWestLocation)) {total++;}
-        if (westLocation!=-1.0&& MapPattern.boxIsBomb(westLocation)) {total++;}
-        if (northWestLocation!=-1.0&& MapPattern.boxIsBomb(northWestLocation)) {total++;}
+        if (mineBox.northLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.northLocation)) {total++;}
+        if (mineBox.northEastLocation !=-1.0&& MapPattern.boxIsBomb(mineBox.northEastLocation)) {total++;}
+        if (mineBox.eastLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.eastLocation)) {total++;}
+        if (mineBox.southEastLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.southEastLocation)) {total++;}
+        if (mineBox.southLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.southLocation)) {total++;}
+        if (mineBox.southWestLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.southWestLocation)) {total++;}
+        if (mineBox.westLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.westLocation)) {total++;}
+        if (mineBox.northWestLocation!=-1.0&& MapPattern.boxIsBomb(mineBox.northWestLocation)) {total++;}
 
         //System.out.println(total);
 

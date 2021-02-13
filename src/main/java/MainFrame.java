@@ -1,34 +1,62 @@
+import net.miginfocom.swing.MigLayout;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame{
     static MapPattern mapPattern = new MapPattern();
+    GameDifficulty gameDifficulty;
 
-    MainFrame(){
-        setLayout(new BorderLayout());
+    MainFrame(GameDifficulty gameDifficulty){
+        this.gameDifficulty = gameDifficulty;
+        //setLayout(new GridLayout(1,1));
+        setLayout(new MigLayout("fill, insets 0 0 0 0"));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        int height =  Toolkit.getDefaultToolkit().getScreenSize().height;
-        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-        Dimension customScreen = new Dimension((width*5)/29,(height*5)/17);
         setTitle("MineBoxes");
-        JMenuBar jMenuBar = new JMenuBar();
-        JMenuItem newGame = new JMenuItem("New Game");
-        JMenu game = new JMenu("Game");
-        game.add(newGame);
-        jMenuBar.add(game);
-        add(jMenuBar,BorderLayout.NORTH);
-        //add(new ScorePanel(),BorderLayout.SOUTH);
-        add(new BoxPanel(),BorderLayout.CENTER);
-        setPreferredSize(customScreen);
-        pack();
+        //setPreferredSize(new Dimension(250,300));
 
+        JMenuBar jMenuBar = new JMenuBar();
+        JMenu gameMenu = new JMenu("Game");
+        JMenuItem easyGame = new JMenuItem("Easy");
+        easyGame.addActionListener(e -> {
+            new MainFrame(GameDifficulty.EASY);
+            dispose();
+        });
+        JMenuItem mediumGame = new JMenuItem("Medium");
+        mediumGame.addActionListener(e ->{
+            new MainFrame(GameDifficulty.MEDIUM);
+            dispose();
+        });
+        JMenuItem hardGame = new JMenuItem("Hard");
+        hardGame.addActionListener(e ->{
+            new MainFrame(GameDifficulty.HARD);
+            dispose();
+        });
+        JMenuItem insane = new JMenuItem("Insane");
+        insane.addActionListener(e->{
+            new MainFrame(GameDifficulty.INSANE);
+            dispose();
+        });
+
+        gameMenu.add(easyGame);
+        gameMenu.add(mediumGame);
+        gameMenu.add(hardGame);
+        gameMenu.add(insane);
+
+        jMenuBar.add(gameMenu);
+        add(jMenuBar,"north");
+
+        //add(new ScorePanel(),"dock north");
+        add(new BoxPanel(),"grow");
+        add(new ScorePanel(),"south");
+        pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
     }
 
     public static void main(String[] args){
-        new MainFrame();
+        new MainFrame(GameDifficulty.EASY);
 
     }
 
